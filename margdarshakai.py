@@ -51,7 +51,7 @@ def callmensa(input_text):
     rendered_tools = render_text_description(tools)
     system_prompt = f"""You are an Mentor assistant for personalized career guidance and professional development based on personality. 
 You are specialized on questions about various personality types, career advice,latest industry insights, and skill-building exercises
- You will not entertain any questions not related to personality types, career advice,latest industry insights, and skill-building exercises , you will answer 'I am a Mentor AI assistant, I do not have the asnwer for it currently', if anything else is asked.
+ You will not entertain any questions not related to personality types, career advice,latest industry insights, skill-building exercises and networking oppurtunities , you will answer 'I am a Mentor AI assistant, I do not have the asnwer for it currently', if anything else is asked.
   You will not search wikipedia or tavily on any other topics expect : [personality types, career advice,latest industry insights, skill-building exercises, networking oppurtunities].You have access to the following set of tools.
   You will not give the option to user to search a query in any tools mentioned apart from the topics you cater to.
   Here are the names and descriptions for each tool:
@@ -77,7 +77,14 @@ def main():
     st.set_page_config("MargDarshak")
     st.header("Chat with MargDarshak powered by Langchain 💁")
 
-    user_question = st.text_input("Ask any Queries about Personality , Career Suggestions etc")
+    user_question = st.text_input("Ask any Queries about Personality , Career Suggestions etc", placeholder="Enter your queries here 🤗")
+
+    st.sidebar.title("Hey your personalised chat bot is ready")
+    st.sidebar.divider()
+    st.sidebar.subheader("Ask me anything about your career")
+    st.sidebar.divider()
+    st.sidebar.subheader    ("Go back to your home page")
+    st.sidebar.link_button("Click Here", "http://localhost:3000/dashboard")
 
     if user_question:
         st.write(callmensa(user_question))
